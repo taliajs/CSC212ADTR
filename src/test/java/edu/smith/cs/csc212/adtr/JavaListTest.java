@@ -11,7 +11,7 @@ import edu.smith.cs.csc212.adtr.errors.BadIndexError;
 import edu.smith.cs.csc212.adtr.errors.EmptyListError;
 import edu.smith.cs.csc212.adtr.real.JavaList;
 
-
+//Help from TAs, Lab Partner: Isabel
 public class JavaListTest {
 	
 	/**
@@ -42,18 +42,20 @@ public class JavaListTest {
 		Assert.assertEquals(true, data.isEmpty());
 	}
 	
+	//needs a test?
 	@Test(expected=EmptyListError.class)
 	public void testRemoveFrontCrash() {
 		ListADT<String> data = makeEmptyList();
 		data.removeFront();
 	}
 	
+	//needs a test?
 	@Test(expected=EmptyListError.class)
 	public void testRemoveBackCrash() {
 		ListADT<String> data = makeEmptyList();
 		data.removeBack();
 	}
-	
+	//needs a test?
 	@Test(expected=EmptyListError.class)
 	public void testRemoveIndexCrash() {
 		ListADT<String> data = makeEmptyList();
@@ -87,9 +89,87 @@ public class JavaListTest {
 		Assert.assertEquals(false, data.isEmpty());
 	}
 	
-	// TODO: test list addToBack.
+	/**
+	 * addtoBack
+	 */
+	//test list addToBack.
+	@Test
+	public void testAddToBack() {
+		ListADT<String> data = makeEmptyList();
+		Assert.assertEquals(true, data.isEmpty());
+		data.addBack("-1");
+		Assert.assertEquals(1, data.size());
+		Assert.assertEquals("-1", data.getIndex(0));
+		Assert.assertEquals(false, data.isEmpty());
+		data.addBack("0");
+		Assert.assertEquals(2, data.size());
+		Assert.assertEquals("-1", data.getIndex(0));
+		Assert.assertEquals("0", data.getIndex(1));
+		Assert.assertEquals(false, data.isEmpty());
+		data.addBack("1");
+		Assert.assertEquals(3, data.size());
+		Assert.assertEquals("-1", data.getIndex(0));
+		Assert.assertEquals("0", data.getIndex(1));
+		Assert.assertEquals("1", data.getIndex(2));
+		Assert.assertEquals(false, data.isEmpty());
+	}
+	
+	
 	// TODO: test list remove
+	/**
+	 * removeFront
+	 */
+	@Test
+	public void testRemoveFront() {
+		ListADT<String> data = makeEmptyList();
+		Assert.assertEquals(true, data.isEmpty());
+		data.addBack("a");
+		data.addBack("b");
+		data.addBack("c");
+		data.addBack("d");
+		data.removeFront();
+		Assert.assertEquals(3, data.size()); //checking the size
+		Assert.assertEquals("c", data.getIndex(1)); //the data should have moved up
+	}
+	
+	/**
+	 * removeBack
+	 */
+	
+	@Test
+	public void testRemoveBackEmpty() {
+		//test empty list
+		ListADT<String> data = makeEmptyList();
+		Assert.assertEquals(true, data.isEmpty());
+		
+	}
+	
+	@Test
+	public void testRemoveBackMultiple() {
+		ListADT<String> data = makeFullList();
+		data.removeBack();
+		Assert.assertEquals(3, data.size());
+		Assert.assertEquals("b", data.getIndex(1));	
+	}
+	
+	/**
+	 * removeIndex
+	 */
+	@Test
+	public void testRemoveIndex() {
+		makeFullList();
+		
+		
+	}
+	
+	/**
+	 * addIndex
+	 */
 	// TODO test addIndex methods.
+	@Test 
+	public void testAddIndex() {
+		
+	}
 	
 	@Test
 	public void testGetFront() {
@@ -152,6 +232,15 @@ public class JavaListTest {
 	}
 	
 	// TODO write some tests for setIndex.
+	
+	/**
+	 * setIndex
+	 */
+	@Test
+	public void testSetIndex() {
+		
+	}
+	
 	
 	@Test
 	public void testToJava() {
