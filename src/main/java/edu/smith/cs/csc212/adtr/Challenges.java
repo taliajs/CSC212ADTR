@@ -3,20 +3,20 @@ package edu.smith.cs.csc212.adtr;
 import edu.smith.cs.csc212.adtr.real.JavaMap;
 import edu.smith.cs.csc212.adtr.real.JavaSet;
 
-//Help from: TAs 
+//Help from: TAs
 
 public class Challenges {
 
 	// The union of two sets is the set of elements that either contains.
 	public static SetADT<Integer> union(SetADT<Integer> left, SetADT<Integer> right) {
 		SetADT<Integer> output = new JavaSet<>();
-		
+
 		// for loop to go over all the elements in left list, then insert in the output
 		for (Integer i : left) {
 			output.insert(i);
 		}
-		
-		for (Integer i: right) {
+
+		for (Integer i : right) {
 			output.insert(i);
 		}
 		return output;
@@ -26,10 +26,10 @@ public class Challenges {
 	// The intersection of two sets is the set of elements that both contain.
 	public static SetADT<Integer> intersection(SetADT<Integer> left, SetADT<Integer> right) {
 		SetADT<Integer> output = new JavaSet<>();
-		
+
 		for (Integer i : left) {
 			if (right.contains(i)) {
-				output.insert(i); //output is the intersection
+				output.insert(i); // output is the intersection
 			}
 		}
 		return output;
@@ -39,13 +39,14 @@ public class Challenges {
 	public static MapADT<String, Integer> wordCount(ListADT<String> words) {
 		MapADT<String, Integer> output = new JavaMap<>();
 		
-		//output.insert(i);
-		
-
-		
-
-		// counts (python) = {"a": 3, "b": 2, "c": 1, "d": 1}
-
+		for (String s : words ) {
+			if (output.get(s) == null) {
+				output.put(s, 1); //add one 
+			} else { //how to update it?
+				output.put(s, output.get(s) + 1); 
+			}
+		}		
 		return output;
+		
 	}
 }

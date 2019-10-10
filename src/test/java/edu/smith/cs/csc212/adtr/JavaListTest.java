@@ -94,9 +94,24 @@ public class JavaListTest {
 	 */
 	//test list addToBack.
 	@Test
-	public void testAddToBack() {
+	public void testAddToBackEmpty() {
 		ListADT<String> data = makeEmptyList();
 		Assert.assertEquals(true, data.isEmpty());
+		data.addBack("-1");
+	}
+	
+	@Test 
+	public void testAddToBackSingle() {
+		ListADT<String> data = makeEmptyList();
+		Assert.assertEquals(0, data.size());
+		data.addBack("-1");
+		Assert.assertEquals("-1", data.getIndex(0));
+		Assert.assertEquals(false, data.isEmpty());
+	}
+	
+	@Test
+	public void testAddToBack() {
+		ListADT<String> data = makeEmptyList();
 		data.addBack("-1");
 		Assert.assertEquals(1, data.size());
 		Assert.assertEquals("-1", data.getIndex(0));
@@ -115,10 +130,18 @@ public class JavaListTest {
 	}
 	
 	
-	// TODO: test list remove
+	//test list remove
 	/**
 	 * removeFront
 	 */
+	@Test 
+	public void testRemoveFrontSingle() {
+		ListADT<String> data = makeEmptyList(); 
+		data.addBack("A");
+		data.removeFront();
+		Assert.assertEquals(0, data.size()); //A should been removed 
+	}
+	
 	@Test
 	public void testRemoveFront() {
 		ListADT<String> data = makeEmptyList();
@@ -140,8 +163,7 @@ public class JavaListTest {
 	public void testRemoveBackEmpty() {
 		//test empty list
 		ListADT<String> data = makeEmptyList();
-		Assert.assertEquals(true, data.isEmpty());
-		
+		Assert.assertEquals(true, data.isEmpty());	
 	}
 	
 	@Test
@@ -157,9 +179,10 @@ public class JavaListTest {
 	 */
 	@Test
 	public void testRemoveIndex() {
-		makeFullList();
-		
-		
+		ListADT<String> data = makeFullList();
+		Assert.assertEquals("c", data.removeIndex(2)); //we removed c
+		Assert.assertEquals(3, data.size());
+		Assert.assertEquals("d", data.getIndex(2)); // d moves up
 	}
 	
 	/**
@@ -167,7 +190,12 @@ public class JavaListTest {
 	 */
 	// TODO test addIndex methods.
 	@Test 
-	public void testAddIndex() {
+	public void testAddIndexEnd() {
+		ListADT<String> data = makeFullList();
+		data.addIndex(4, "e");
+		
+		//addindexbeginning --> 0
+		//add index middle --> 1,2, 3
 		
 	}
 	

@@ -12,6 +12,16 @@ public class JavaMapTest {
 		assertEquals(x, y);
 	}
 	
+	/**
+	 * Put 
+	 */
+	@Test
+	public void testPutSingle() {
+		MapADT<String, String> items = new JavaMap<>();
+		items.put("pumpkin", "fall");
+		assertEquals(items.get("pumpkin"), "fall");	
+	}
+	
 	@Test 
 	public void testPut() {
 		MapADT<String, String> food = new JavaMap<>(); //strings are case sensitive
@@ -27,9 +37,9 @@ public class JavaMapTest {
 		assertEquals(food.get("tomato"), "vegetable");
 	}
 
-	
 	@Test 
-	public void testRepeatedPut() { //if i repeat the same key, value pair
+	//if i repeat the same key, value pair
+	public void testRepeatedPut() { 
 		MapADT<String, String> food = new JavaMap<>(); //strings are case sensitive
 		food.put("banana", "fruit");
 		food.put("apple", "fruit");
@@ -41,11 +51,11 @@ public class JavaMapTest {
 		assertEquals(food.get("apple"), "fruit");
 		assertEquals(food.get("carrot"), "vegetable");
 		assertEquals(food.get("carrot"), "vegetable");
-		
 	}
 	
 	@Test 
-	public void testChangePut() { //if i change the value of a key 
+	//if i change the value of a key 
+	public void testChangePut() { 
 		MapADT<String, String> food = new JavaMap<>(); //strings are case sensitive
 		food.put("banana", "fruit");
 		food.put("apple", "fruit");
@@ -56,7 +66,20 @@ public class JavaMapTest {
 		assertEquals(food.get("apple"), "fruit");
 		assertEquals(food.get("carrot"), "vegetable");
 		assertEquals(food.get("tomato"), "fruit");
+	}
+	
+	/**
+	 * Get
+	 */
+	@Test 
+	public void testNumGetSingle() {
+		MapADT<Integer, Integer> singlenumber = new JavaMap<>();
+		singlenumber.put(7, 17);
 		
+		//Solution:
+		assertIntEq(singlenumber.get(7), 17);
+		assertEquals((int) singlenumber.get(7), 17);
+		assertEquals(singlenumber.get(7), (Integer) 17);
 	}
 	
 	@Test 
@@ -76,6 +99,9 @@ public class JavaMapTest {
 		assertIntEq(squares.get(2), 4);
 	}
 	
+	/**
+	 * Size
+	 */
 	@Test
 	public void testEmpty() {
 		MapADT<String, String> empty = new JavaMap<>();
@@ -92,13 +118,6 @@ public class JavaMapTest {
 	}
 	
 	@Test
-	public void testSizeInt() {
-		MapADT<Integer, Integer> singlenum = new JavaMap <>();
-		singlenum.put(7, 17);
-		assertEquals(1, singlenum.size());
-	}
-	
-	@Test
 	public void testSize4() {
 		MapADT<String, String> four = new JavaMap <>();
 		four.put("7", "17");
@@ -106,7 +125,34 @@ public class JavaMapTest {
 		four.put("20", "9");
 		four.put("11", "13");
 		assertEquals(4, four.size());
-		
+	}
+	
+	@Test
+	public void testSizeInt1() {
+		MapADT<Integer, Integer> singlenum = new JavaMap <>();
+		singlenum.put(7, 17);
+		assertEquals(1, singlenum.size());
+	}
+	
+	@Test
+	public void testSizeInt() {
+		MapADT<Integer, Integer> nums = new JavaMap <>();
+		nums.put(7, 17);
+		nums.put(10, 13);
+		assertEquals(2, nums.size());
+	}
+	
+
+	
+	/**
+	 * Remove
+	 */
+	@Test
+	public void testRemoveSingle() {
+		MapADT<String, String> list = new JavaMap<>(); 
+		list.put("october", "halloween");
+		list.remove("october"); //only need to remove the key
+		assertEquals(0, list.size());
 	}
 	
 	@Test 
@@ -118,8 +164,8 @@ public class JavaMapTest {
 		list.put("11", "13");
 		list.remove("4"); //only need to remove the key --> will remove the whole row
 		assertEquals(3, list.size());
-		
 	}
+
 	
 
 }
