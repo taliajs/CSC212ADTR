@@ -29,7 +29,6 @@ public class JavaMapTest {
 		food.put("apple", "fruit");
 		food.put("carrot", "vegetable");
 		food.put("tomato", "vegetable");
-		//value will be whatever latest key
 		
 		assertEquals(food.get("banana"), "fruit");
 		assertEquals(food.get("apple"), "fruit");
@@ -38,14 +37,14 @@ public class JavaMapTest {
 	}
 
 	@Test 
-	//if i repeat the same key, value pair
+	//If I repeat the same key, value pair
 	public void testRepeatedPut() { 
 		MapADT<String, String> food = new JavaMap<>(); //strings are case sensitive
 		food.put("banana", "fruit");
 		food.put("apple", "fruit");
 		food.put("carrot", "vegetable");
 		food.put("carrot", "vegetable");
-		//value will be whatever latest key
+		//value will be whatever the latest key is 
 		
 		assertEquals(food.get("banana"), "fruit");
 		assertEquals(food.get("apple"), "fruit");
@@ -54,7 +53,7 @@ public class JavaMapTest {
 	}
 	
 	@Test 
-	//if i change the value of a key 
+	//If I change the value of a key 
 	public void testChangePut() { 
 		MapADT<String, String> food = new JavaMap<>(); //strings are case sensitive
 		food.put("banana", "fruit");
@@ -76,7 +75,7 @@ public class JavaMapTest {
 		MapADT<Integer, Integer> singlenumber = new JavaMap<>();
 		singlenumber.put(7, 17);
 		
-		//Solution:
+		//Solutions: 
 		assertIntEq(singlenumber.get(7), 17);
 		assertEquals((int) singlenumber.get(7), 17);
 		assertEquals(singlenumber.get(7), (Integer) 17);
@@ -106,7 +105,6 @@ public class JavaMapTest {
 	public void testEmpty() {
 		MapADT<String, String> empty = new JavaMap<>();
 		assertEquals(empty.size(), 0);
-		//Assert.assert
 	}
 	
 	@Test 
@@ -165,7 +163,5 @@ public class JavaMapTest {
 		list.remove("4"); //only need to remove the key --> will remove the whole row
 		assertEquals(3, list.size());
 	}
-
-	
 
 }

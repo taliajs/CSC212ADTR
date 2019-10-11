@@ -42,8 +42,8 @@ public class Challenges {
 		for (String s : words ) {
 			if (output.get(s) == null) {
 				output.put(s, 1); //add one 
-			} else { //how to update it?
-				output.put(s, output.get(s) + 1); 
+			} else { 
+				output.put(s, output.get(s) + 1); //update the count
 			}
 		}		
 		return output;
